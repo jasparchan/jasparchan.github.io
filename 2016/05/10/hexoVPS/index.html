@@ -1,0 +1,997 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Github,Travis,VPS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
+搭建环境和流程
+本机：Mac OX、Node.js、Hexo、Git、Travis
+VPS服务器：Nginx、Git、Sudo
+流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建Hexo博客（Github+Travis+VPS）">
+<meta property="og:url" content="http://robinchan.cn/2016/05/10/hexoVPS/index.html">
+<meta property="og:site_name" content="神话先生">
+<meta property="og:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
+搭建环境和流程
+本机：Mac OX、Node.js、Hexo、Git、Travis
+VPS服务器：Nginx、Git、Sudo
+流程">
+<meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/opentravis.png">
+<meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/hexoDirectory.png">
+<meta property="og:updated_time" content="2017-02-08T00:18:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建Hexo博客（Github+Travis+VPS）">
+<meta name="twitter:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
+搭建环境和流程
+本机：Mac OX、Node.js、Hexo、Git、Travis
+VPS服务器：Nginx、Git、Sudo
+流程">
+<meta name="twitter:image" content="http://7sbydq.com1.z0.glb.clouddn.com/opentravis.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://robinchan.cn/2016/05/10/hexoVPS/"/>
+
+
+
+
+
+  <title> 搭建Hexo博客（Github+Travis+VPS） | 神话先生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d4cc25ad364a56f93303bcfa0d03ab51";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">神话先生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">洗涤灵魂，以阳光之气待人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-high">
+          <a href="/high" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bolt"></i> <br />
+            
+            嗨起来
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://robinchan.cn/2016/05/10/hexoVPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Robin Chan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7sbydq.com1.z0.glb.clouddn.com/binMythAvatar">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="神话先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                搭建Hexo博客（Github+Travis+VPS）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-10T11:50:15+08:00">
+                2016-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/05/10/hexoVPS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/05/10/hexoVPS/" class="leancloud_visitors" data-flag-title="搭建Hexo博客（Github+Travis+VPS）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。</p>
+<h2 id="搭建环境和流程"><a href="#搭建环境和流程" class="headerlink" title="搭建环境和流程"></a>搭建环境和流程</h2><ol>
+<li>本机：Mac OX、Node.js、Hexo、Git、Travis</li>
+<li>VPS服务器：Nginx、Git、Sudo</li>
+<li>流程：<ol>
+<li>本机提交hexo博客源码</li>
+<li>Travis收到代码变更通知，拉取最新代码，并<code>hexo g</code>生成博客静态页面，再<code>hexo d</code>部署到VPS(或Github或Coding)</li>
+<li>VPS则同步相应的Public文件夹:存放静态页面</li>
+<li>Web浏览器访问<a id="more"></a>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo官方文档</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 本机安装hexo不加权限会报错，安装命令加上sudo</div><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<p>安装完毕，并初始化博客后，在你的github建立一个repository</p>
+<h2 id="Travis-CI-自动部署-hexo"><a href="#Travis-CI-自动部署-hexo" class="headerlink" title="Travis CI 自动部署 hexo"></a>Travis CI 自动部署 hexo</h2><h3 id="公钥密钥"><a href="#公钥密钥" class="headerlink" title="公钥密钥"></a>公钥密钥</h3><p>打开终端，本地生成id_rsa(私钥)，id_rsa.pub（公钥）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.email &quot;#邮箱&quot; </div><div class="line">$ git config --global user.name &quot;#用户名&quot; </div><div class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot; #一路回车就好</div></pre></td></tr></table></figure></p>
+<p>公钥（id_rsa.pub）和私钥（id_rsa）默认生成在:~/.ssh/ 目录下。<br>复制公钥到github、coding对应官网的SSH keys<br>后面也用来免密码登陆vps</p>
+<h3 id="建立hexo代码库"><a href="#建立hexo代码库" class="headerlink" title="建立hexo代码库"></a>建立hexo代码库</h3><p>上面我们已经建立了hexo博客的代码库，现在需要有一个 Travis CI 的账号，直接进入 <a href="https://travis-ci.org/" target="_blank" rel="external">Travis CI</a> 官网，用自己的 Github 账号授权登录即可。然后可以看到当前账号的所有代码仓库，接下来将博客项目的状态设置为启用。如下图<br><img src="http://7sbydq.com1.z0.glb.clouddn.com/opentravis.png" alt="image"></p>
+<h3 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h3><p>私钥（id_rsa) 需要随博客代码库提交到github，所以必须加密为好。<br>刚才公钥文件配置在github，然后配置私钥文件</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd #根目录</div></pre></td></tr></table></figure>
+<p>   在 hexo 项目下面建立一个 .travis 的文件夹来放置需要配置的文件。<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir .travis</div></pre></td></tr></table></figure></p>
+<p>   建立travis的配置文件<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch .travis.yml</div></pre></td></tr></table></figure></p>
+<p>   首先要安装 travis 命令行工具(温馨提示：使用<a href="https://ruby.taobao.org/" target="_blank" rel="external">淘宝源</a>速度更快哦)。<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem install travis</div></pre></td></tr></table></figure></p>
+<p>   用命令行工具登录<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ travis login --auto</div></pre></td></tr></table></figure></p>
+<p>   然后将刚刚生成的 id_rsa 复制到根目录，用命令行工具进行加密：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ travis encrypt-file id_rsa --add</div></pre></td></tr></table></figure></p>
+<p>   这时候会生成加密后的密钥文件id_rsa.enc，删掉原来的id_rsa，把id_rsa.enc移到.travis文件夹为了让 git 默认连接 SSH 还要创建一个 ssh_config 文件。<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch .travis/ssh_config</div></pre></td></tr></table></figure></p>
+<p>   在 .travis 文件夹下创建一个 ssh_config 文件，输入以下内容：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Host github.com</div><div class="line">User git</div><div class="line">StrictHostKeyChecking no</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line">IdentitiesOnly yes</div><div class="line">#</div><div class="line">#如果要部署到多个地方，可以追加</div><div class="line">#</div><div class="line">Host #IP  eg.VPS、Coding</div><div class="line">User git</div><div class="line">StrictHostKeyChecking no</div><div class="line">IdentityFile ~/.ssh/id_rsa</div><div class="line">IdentitiesOnly yes</div></pre></td></tr></table></figure></p>
+<p>   最后就要配置 .travis.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 配置语言</div><div class="line">language: node_js</div><div class="line">sudo: false</div><div class="line"># 项目所在分支</div><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - master  </div><div class="line"># 缓存node_modules，节省部署时间</div><div class="line">cache:</div><div class="line">  directories:</div><div class="line">  - node_modules</div><div class="line">#部署之前配置</div><div class="line">before_install:</div><div class="line">#把私钥解密，这里需要注意私钥的路径</div><div class="line">- openssl aes-256-cbc -K $encrypted_372fe9aee9a2_key -iv $encrypted_372fe9aee9a2_iv</div><div class="line">  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d</div><div class="line"> # 改变文件权限</div><div class="line">- chmod 600 ~/.ssh/id_rsa</div><div class="line"># 配置 ssh</div><div class="line">- eval $(ssh-agent)</div><div class="line">- ssh-add ~/.ssh/id_rsa</div><div class="line">- cp .travis/ssh_config ~/.ssh/config</div><div class="line"># 配置 git</div><div class="line">- git config --global user.name &apos;your name&apos;</div><div class="line">- git config --global user.email your email</div><div class="line"># 安装依赖</div><div class="line">install:</div><div class="line">- npm install hexo-cli -g</div><div class="line">- npm install</div><div class="line"># 部署</div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo g</div><div class="line">- hexo d</div></pre></td></tr></table></figure></p>
+<p>这里有一份我的 <a href="https://github.com/jasparchan/robinchanblog/blob/master/.travis.yml" target="_blank" rel="external">travis</a> 配置文件，下面是我的目录<br><img src="http://7sbydq.com1.z0.glb.clouddn.com/hexoDirectory.png" alt="image"></p>
+<p>   到这里，当我们commit hexo代码后，travis会帮我们执行<code>hexo clean``hexo g``hexo d</code>等命令。但<code>hexo d</code>，也就是部署命令，还需要做下一步</p>
+<h2 id="部署到VPS与Git-Hooks更新"><a href="#部署到VPS与Git-Hooks更新" class="headerlink" title="部署到VPS与Git Hooks更新"></a>部署到VPS与Git Hooks更新</h2><h3 id="创建站点管理者"><a href="#创建站点管理者" class="headerlink" title="创建站点管理者"></a>创建站点管理者</h3><p>连接ssh，（本人vps的系统为Centos 6 x86_64 minimal）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh vps id #输入密码</div></pre></td></tr></table></figure></p>
+<p>创建用户组和用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ groupadd sitesManagers #创建用户组</div><div class="line">$ useradd #your name -m -g sitesManagers #创建用户</div></pre></td></tr></table></figure></p>
+<p>设置用户密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ passwd #your name</div></pre></td></tr></table></figure></p>
+<p>设置用户目录权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 755 /home/#your name</div></pre></td></tr></table></figure></p>
+<p>给用户添加sudo权限,(若没安装sudo，可<code>yum install sudo</code>,安装后才会有<code>/etc/sudoers</code>目录）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd /etc/sudoers</div><div class="line"># 找到以下指令添加</div><div class="line">## Allow root to run any commands anywhere</div><div class="line">root    ALL=(ALL)     ALL</div><div class="line">#your name   ALL=(ALL)     ALL #新增这条指令</div></pre></td></tr></table></figure></p>
+<p>设置VPS上ssh的端口号，将/etc/ssh/sshd_config文件中的Port为22设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cd /etc/ssh/sshd_config</div><div class="line"># 更改</div><div class="line"># Port 22</div></pre></td></tr></table></figure></p>
+<h3 id="使用刚创建的管理者免密码登陆VPS"><a href="#使用刚创建的管理者免密码登陆VPS" class="headerlink" title="使用刚创建的管理者免密码登陆VPS"></a>使用刚创建的管理者免密码登陆VPS</h3><p>拷贝公钥到远程服务器上,username换成你的用户名，和服务器地址,会提示输入密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scp ~/.ssh/id_rsa.pub username@hostname.com:~/.ssh/</div></pre></td></tr></table></figure></p>
+<p>登陆远程服务操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh username@hostname.com</div></pre></td></tr></table></figure></p>
+<p>输入密码后登录，也许是你最后一次登录服务器需要密码，接着需要在服务器上添加公钥。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div></pre></td></tr></table></figure></p>
+<p>Done!<code>logout</code>后，再<code>ssh username@hostname.com</code>就无需输入密码啦</p>
+<h3 id="配置nginx和git"><a href="#配置nginx和git" class="headerlink" title="配置nginx和git"></a>配置nginx和git</h3><p>登陆vps（root 用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh your vps id #root用户</div></pre></td></tr></table></figure></p>
+<p>安装git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install git</div></pre></td></tr></table></figure></p>
+<p>安装nginx,在/etc/yum.repos.d目录下创建一个源配置文件nginx.repo,写入如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ yum install nginx -y</div><div class="line">$ yum -v #查看nginx版本号</div></pre></td></tr></table></figure>
+<p>登陆vps（站点管理者用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh username@hostname.com #站点管理者用户</div></pre></td></tr></table></figure></p>
+<p>创建git仓库，注意目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd /home/username</div><div class="line">$ mkdir hexo.git</div><div class="line">$ cd hexo.git</div><div class="line">$ git init --bare</div></pre></td></tr></table></figure></p>
+<p>配置git hooks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">$ cd /home/username/git/hexo.git/hooks</div><div class="line">$ vi post-receive  //我安装时该目录内有~.sample文件，可以改名下或者直接新建一个。</div><div class="line">#</div><div class="line">输入以下内容</div><div class="line">#!/bin/bash</div><div class="line">GIT_REPO=/home/username/hexo.git  //上面自己创建的文件夹</div><div class="line">TMP_GIT_CLONE=/tmp/hexo</div><div class="line">PUBLIC_WWW=/var/www/hexo  //网站文件目录，需要自己创建</div><div class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</div><div class="line">git clone $GIT_REPO $TMP_GIT_CLONE</div><div class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*</div><div class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;</div><div class="line">#</div><div class="line">再执行</div><div class="line">$ chmod +x post-receive</div><div class="line">#</div><div class="line">接着创建目录</div><div class="line">/var/www/hexo</div><div class="line">并赋予权限</div><div class="line">$ sudo chmod 777 -R /var/www/hexo</div></pre></td></tr></table></figure></p>
+<p>配置nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi /etc/nginx/conf.d/default.conf</div></pre></td></tr></table></figure></p>
+<p>我修改的一部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name  www.robinchan.cn robinchan.cn blog.robinchan.cn *.robinchan.cn;</div><div class="line">    location / &#123;</div><div class="line">        root   /var/www/robinchan.cn/public;</div><div class="line">        index  index.html index.htm;</div><div class="line">    &#125;</div><div class="line">    error_page  404              /404.html;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen       80  default_server;</div><div class="line">    server_name  _;</div><div class="line">    return       404;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>重启nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service nginx restart</div></pre></td></tr></table></figure></p>
+<h3 id="Hexo-deploy配置"><a href="#Hexo-deploy配置" class="headerlink" title="Hexo deploy配置"></a>Hexo deploy配置</h3><p>博客目录下的_config.yml文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  message: update done</div><div class="line">  repo:</div><div class="line">    github: git@github.com:jasparchan/jasparchan.github.io.git,master</div><div class="line">    gitcafe: git@git.coding.net:jasparchan/jasparchan.git,master</div><div class="line">    vps: RobinChan@robinchan.cn:hexo.git,master</div></pre></td></tr></table></figure></p>
+<p>如果vps默认ssh端口没有改为22的话<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh://RobinChan@robinchan.cn:your port/~/hexo.git</div></pre></td></tr></table></figure></p>
+<p>over</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p>感谢能让我少走弯路的这些文章</p>
+<ol>
+<li><a href="http://xyz0z0.xyz/2016/02/10/%E5%9C%A8bandwagonhost%E6%90%AC%E7%93%A6%E5%B7%A5%E4%B8%8A%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%E5%B9%B6%E4%BD%BF%E7%94%A8git-hooks%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" target="_blank" rel="external">在bandwagonhost搬瓦工上搭建Hexo博客并使用git hooks自动部署</a></li>
+<li><a href="http://www.hansoncoder.com/2016/03/02/VPS-building-Hexo/" target="_blank" rel="external">VPS(CentOS)搭建Hexo博客与Git Hooks更新（小白篇）</a></li>
+<li><a href="http://blog.csdn.net/chen_chun_guang/article/details/42297011" target="_blank" rel="external">ssh-keygen配合ssh_config免密码登录VPS</a></li>
+<li><a href="https://zespia.tw/blog/2015/01/21/continuous-deployment-to-github-with-travis/" target="_blank" rel="external">用 Travis CI 自動部署網站到 GitHub</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+            <a href="/tags/Travis/" rel="tag"># Travis</a>
+          
+            <a href="/tags/VPS/" rel="tag"># VPS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/30/winson/" rel="next" title="winson">
+                <i class="fa fa-chevron-left"></i> winson
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/12/FestivalofLightsAgain/" rel="prev" title="再一次灯光节">
+                再一次灯光节 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7sbydq.com1.z0.glb.clouddn.com/binMythAvatar"
+               alt="Robin Chan" />
+          <p class="site-author-name" itemprop="name">Robin Chan</p>
+           
+              <p class="site-description motion-element" itemprop="description">分享生活，分享技术</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jasparchan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/cweibin" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://facebook.com/jesparchan" target="_blank" title="FB">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  FB
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/robinchan758" target="_blank" title="Ins">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  Ins
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://peiyan.club" title="慎独" target="_blank">慎独</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建环境和流程"><span class="nav-number">2.</span> <span class="nav-text">搭建环境和流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">3.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Travis-CI-自动部署-hexo"><span class="nav-number">4.</span> <span class="nav-text">Travis CI 自动部署 hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥密钥"><span class="nav-number">4.1.</span> <span class="nav-text">公钥密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立hexo代码库"><span class="nav-number">4.2.</span> <span class="nav-text">建立hexo代码库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Travis-CI"><span class="nav-number">4.3.</span> <span class="nav-text">配置Travis CI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署到VPS与Git-Hooks更新"><span class="nav-number">5.</span> <span class="nav-text">部署到VPS与Git Hooks更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建站点管理者"><span class="nav-number">5.1.</span> <span class="nav-text">创建站点管理者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用刚创建的管理者免密码登陆VPS"><span class="nav-number">5.2.</span> <span class="nav-text">使用刚创建的管理者免密码登陆VPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置nginx和git"><span class="nav-number">5.3.</span> <span class="nav-text">配置nginx和git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-deploy配置"><span class="nav-number">5.4.</span> <span class="nav-text">Hexo deploy配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">6.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Robin Chan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "6307407d2f01491aa322d35c1ce3ae7a",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3ybo30xOd0PLReDkhqEeWOJR-gzGzoHsz", "94Cdf3fTsleQ0StzLDikoBAj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
