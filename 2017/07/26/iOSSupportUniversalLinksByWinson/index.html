@@ -123,7 +123,7 @@ Q2：为何不用s">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-4de512d9ad573fcf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-211d769bd04de8b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-a10591357e4550f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-26T06:35:09.000Z">
+<meta property="og:updated_time" content="2017-07-26T06:36:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS通用链接 By Winson">
 <meta name="twitter:description" content="官方文档 
@@ -435,6 +435,7 @@ Q2：为何不用s">
 <li><a href="#2. HTTPS Settings"><strong>HTTPS Settings</strong>（服务器配置）</a></li>
 <li><a href="#3. Xcode Settings"><strong>Xcode Settings</strong>（Xcode配置）</a></li>
 </ol>
+<a id="more"></a>
 <p><span id="1. Developer Settings"></span></p>
 <h2 id="Developer-Settings"><a href="#Developer-Settings" class="headerlink" title="Developer Settings"></a>Developer Settings</h2><p>首先，需要在开发者中心开启Associated Domains功能，具体操作是：</p>
 <p>在 <strong>App IDs</strong> 选择你要修改的 <strong>App ID</strong> ；<br><img src="http://upload-images.jianshu.io/upload_images/6067780-a187a924f6edd604.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击要修改的 <strong>App ID</strong>，在列表中勾选 <strong>Associated Domains</strong> ；<br><img src="http://upload-images.jianshu.io/upload_images/6067780-e5aab7f027006d2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>在弹出框点确定，这个警告是告诉你，你如果启用该功能，就相当于编辑了这个 <strong>App ID</strong>，那么你现有的用该 <strong>App ID</strong> 生成的描述文件就得重新生成并导入至 <strong>Xcode</strong> 中了；<br><img src="http://upload-images.jianshu.io/upload_images/6067780-aeda0e60f1172991.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击确定后，你会发现 <strong>Associated Domains</strong> 可用了；<br><img src="http://upload-images.jianshu.io/upload_images/6067780-16b4c4c8a3a0dce4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击描述文件，发现失效了，那是因为你编辑过生成该描述文件用到的 <strong>App ID</strong>，不急，编辑它就是了；<br><img src="http://upload-images.jianshu.io/upload_images/6067780-5f5701fbc4343255.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>编辑描述文件，只需要重新勾选 <strong>App ID</strong> 即可，然后保存的描述文件又变成有效的了。下图注释中说的很明确了，<strong>Download</strong> 该描述文件，双击安装即可。<br><img src="http://upload-images.jianshu.io/upload_images/6067780-57223885809e51b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>开发跟发布的描述文件都重新生成并下载安装之后，开发者中心的配置就完成了。</p>
