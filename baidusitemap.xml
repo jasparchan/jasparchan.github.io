@@ -228,14 +228,33 @@
 
     
   <url>
-    <loc>http://robinchan.cn/2016/03/28/onestory/</loc>
+    <loc>http://robinchan.cn/2016/02/29/JenkinsCI/</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
         <display>
-        <title>一个故事</title>
-        <pubTime>2016-03-28T15:46:29.000Z</pubTime>
+        <title>Jenkins for iOS&Android（自动化构建）</title>
+        <pubTime>2016-02-29T01:56:40.000Z</pubTime>
         
-        <tag>故事</tag>
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://robinchan.cn/2016/09/02/lasttenyears/</loc>
+    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>人生最后十年</title>
+        <pubTime>2016-09-02T10:47:32.000Z</pubTime>
+        
+        <tag>video</tag>
+         
+        <tag>骑车</tag>
          
          
            
@@ -260,35 +279,17 @@
 
     
   <url>
-    <loc>http://robinchan.cn/2016/03/08/XcodeLibraryNotLoaded/</loc>
+    <loc>http://robinchan.cn/2016/03/28/onestory/</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
         <display>
-        <title>真机调试APP时报Library Not Loaded错误</title>
-        <pubTime>2016-03-08T09:59:55.000Z</pubTime>
+        <title>一个故事</title>
+        <pubTime>2016-03-28T15:46:29.000Z</pubTime>
         
-        <tag>iOS</tag>
+        <tag>故事</tag>
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://robinchan.cn/2016/01/08/after-graduation/</loc>
-    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>毕业至今</title>
-        <pubTime>2016-01-08T04:34:56.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="随想笔记" url="http://robinchan.cn/categories/%E9%9A%8F%E6%83%B3%E7%AC%94%E8%AE%B0/"/>
-          
         </display>
     </data>
     </url>
@@ -344,6 +345,57 @@
 
     
   <url>
+    <loc>http://robinchan.cn/2016/03/08/XcodeLibraryNotLoaded/</loc>
+    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>真机调试APP时报Library Not Loaded错误</title>
+        <pubTime>2016-03-08T09:59:55.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://robinchan.cn/2015/07/08/%E6%88%91%E7%9A%84%E6%AF%95%E4%B8%9A%E7%85%A7/</loc>
+    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的毕业照</title>
+        <pubTime>2015-07-08T05:13:29.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://robinchan.cn/2016/01/08/after-graduation/</loc>
+    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>毕业至今</title>
+        <pubTime>2016-01-08T04:34:56.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="随想笔记" url="http://robinchan.cn/categories/%E9%9A%8F%E6%83%B3%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://robinchan.cn/2015/11/04/Just-a-song/</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
@@ -360,39 +412,6 @@
     </data>
     </url>
 
-    
-  <url>
-    <loc>http://robinchan.cn/2016/12/23/iOSSupportedInterfaceOrientation/</loc>
-    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 设置单个页面支持横竖屏</title>
-        <pubTime>2016-12-23T06:17:55.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://robinchan.cn/2016/02/29/JenkinsCI/</loc>
-    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>Jenkins for iOS&Android（自动化构建）</title>
-        <pubTime>2016-02-29T01:56:40.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
     
   <url>
     <loc>http://robinchan.cn/2016/07/04/FellInTheFerryman/</loc>
@@ -446,20 +465,6 @@
 
     
   <url>
-    <loc>http://robinchan.cn/high/index.html</loc>
-    <lastmod>2017-02-08T00:18:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>一起嗨起来</title>
-        <pubTime>2016-01-13T10:46:30.000Z</pubTime>
-        
-         
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://robinchan.cn/2016/07/12/84CharingCrossRoad/</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
@@ -477,31 +482,26 @@
 
     
   <url>
-    <loc>http://robinchan.cn/2016/09/02/lasttenyears/</loc>
+    <loc>http://robinchan.cn/high/index.html</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
         <display>
-        <title>人生最后十年</title>
-        <pubTime>2016-09-02T10:47:32.000Z</pubTime>
+        <title>一起嗨起来</title>
+        <pubTime>2016-01-13T10:46:30.000Z</pubTime>
         
-        <tag>video</tag>
          
-        <tag>骑车</tag>
-         
-         
-           
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://robinchan.cn/2015/07/08/%E6%88%91%E7%9A%84%E6%AF%95%E4%B8%9A%E7%85%A7/</loc>
+    <loc>http://robinchan.cn/2016/12/23/iOSSupportedInterfaceOrientation/</loc>
     <lastmod>2017-02-08T00:18:11.000Z</lastmod>
     <data>
         <display>
-        <title>我的毕业照</title>
-        <pubTime>2015-07-08T05:13:29.000Z</pubTime>
+        <title>iOS 设置单个页面支持横竖屏</title>
+        <pubTime>2016-12-23T06:17:55.000Z</pubTime>
         
          
            
