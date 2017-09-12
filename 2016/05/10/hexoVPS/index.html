@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -95,30 +102,20 @@
 
 
 
-<meta name="description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
-搭建环境和流程
-本机：Mac OX、Node.js、Hexo、Git、Travis
-VPS服务器：Nginx、Git、Sudo
-流程">
+<meta name="description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。 搭建环境和流程 本机：Mac OX、Node.js、Hexo、Git、Travis VPS服务器：Nginx、Git、Sudo 流程">
+<meta name="keywords" content="Github,Travis,VPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建Hexo博客（Github+Travis+VPS）">
 <meta property="og:url" content="http://robinchan.cn/2016/05/10/hexoVPS/index.html">
 <meta property="og:site_name" content="神话先生">
-<meta property="og:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
-搭建环境和流程
-本机：Mac OX、Node.js、Hexo、Git、Travis
-VPS服务器：Nginx、Git、Sudo
-流程">
+<meta property="og:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。 搭建环境和流程 本机：Mac OX、Node.js、Hexo、Git、Travis VPS服务器：Nginx、Git、Sudo 流程">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/opentravis.png">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/hexoDirectory.png">
 <meta property="og:updated_time" content="2017-06-26T07:12:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Hexo博客（Github+Travis+VPS）">
-<meta name="twitter:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。
-搭建环境和流程
-本机：Mac OX、Node.js、Hexo、Git、Travis
-VPS服务器：Nginx、Git、Sudo
-流程">
+<meta name="twitter:description" content="前言  博客是托管到Github和Coding，所以域名解析到相应的记录，但因对域名邮箱的需求，而再设置邮箱解析的话，就会造成CNAME记录冲突。这时候，想到我的VPS只是用来翻墙，有点浪费资源，遂将博客迁移到VPS。这时候域名就不会出现CNAME记录冲突，挺好的。 搭建环境和流程 本机：Mac OX、Node.js、Hexo、Git、Travis VPS服务器：Nginx、Git、Sudo 流程">
 <meta name="twitter:image" content="http://7sbydq.com1.z0.glb.clouddn.com/opentravis.png">
 
 
@@ -1152,5 +1149,19 @@ VPS服务器：Nginx、Git、Sudo
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

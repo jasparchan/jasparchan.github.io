@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -101,6 +108,7 @@
 <meta property="og:url" content="http://robinchan.cn/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="分享生活，分享技术">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神话先生">
 <meta name="twitter:description" content="分享生活，分享技术">
@@ -749,7 +757,7 @@
       
         
           <p><img src="http://upload-images.jianshu.io/upload_images/6067780-bfbf1d20b36064e7.gif?imageMogr2/auto-orient/strip" alt=""></p>
-<p><a href="https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW1">官方文档 </a></p>
+<p><a href="https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW1" target="_blank" rel="external">官方文档 </a></p>
 <blockquote>
 <p>Q1：我的应用为何要使用通用链接？</p>
 </blockquote>
@@ -929,7 +937,7 @@
 
       
         
-          <p>React Native优秀博客，以及优秀的Github库列表（很多英文资料源自于<a href="https://github.com/jondot/awesome-react-native">awesome-react-native</a>）</p>
+          <p>React Native优秀博客，以及优秀的Github库列表（很多英文资料源自于<a href="https://github.com/jondot/awesome-react-native" target="_blank" rel="external">awesome-react-native</a>）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/25/reactnativeblog/#more" rel="contents">
@@ -2177,5 +2185,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="背景目前：    测试人员每次需要测试新版本，都需要开发人员打包，放到SVN，测试人员下载并安装。    打包效率低，尤其是iOS，严重影响开发效率。解决：    使用持续集成（CI）系统jenkins，自动检测并拉取最新代码。    自动打包ios的ipa和android的apk，自动上传到内测分发平台蒲公英或者FIR.">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins for iOS&Android（自动化构建）">
+<meta property="og:title" content="Jenkins for iOS&amp;Android（自动化构建）">
 <meta property="og:url" content="http://robinchan.cn/2016/02/29/JenkinsCI/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="背景目前：    测试人员每次需要测试新版本，都需要开发人员打包，放到SVN，测试人员下载并安装。    打包效率低，尤其是iOS，严重影响开发效率。解决：    使用持续集成（CI）系统jenkins，自动检测并拉取最新代码。    自动打包ios的ipa和android的apk，自动上传到内测分发平台蒲公英或者FIR.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/JenkinsInBrowser.png">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/JenkinsSVN.png">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/JenkinsPollSCM.png">
@@ -111,7 +120,7 @@
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/JenkinsBuildLater.png">
 <meta property="og:updated_time" content="2017-02-08T00:18:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins for iOS&Android（自动化构建）">
+<meta name="twitter:title" content="Jenkins for iOS&amp;Android（自动化构建）">
 <meta name="twitter:description" content="背景目前：    测试人员每次需要测试新版本，都需要开发人员打包，放到SVN，测试人员下载并安装。    打包效率低，尤其是iOS，严重影响开发效率。解决：    使用持续集成（CI）系统jenkins，自动检测并拉取最新代码。    自动打包ios的ipa和android的apk，自动上传到内测分发平台蒲公英或者FIR.">
 <meta name="twitter:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/JenkinsInBrowser.png">
 
@@ -1178,5 +1187,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

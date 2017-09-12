@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="学会摄影，记录生活学会一门新语言，走向全栈跑步500km+，进入蓝色地带骑车随意，可以来几次小长途看书保持每个月1本健身，目标腹肌6块">
+<meta name="keywords" content="todolist">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2017 ToDoList">
 <meta property="og:url" content="http://robinchan.cn/2017/01/05/2017ToDoList/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="学会摄影，记录生活学会一门新语言，走向全栈跑步500km+，进入蓝色地带骑车随意，可以来几次小长途看书保持每个月1本健身，目标腹肌6块">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-11T02:48:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 ToDoList">
@@ -1049,5 +1058,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

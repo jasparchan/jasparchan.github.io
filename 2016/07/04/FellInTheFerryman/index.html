@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="当我生命将要结束的时候，如果还剩下60秒。我会在前20秒回忆在我生命中给我带来美好的事和人，再用20秒对我的亲人和爱人说我爱你们，好好活下去。最后20秒，我想，就静静地，带着笑容，享受最后的时光~">
+<meta name="keywords" content="读书">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《摆渡人》后感">
 <meta property="og:url" content="http://robinchan.cn/2016/07/04/FellInTheFerryman/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="当我生命将要结束的时候，如果还剩下60秒。我会在前20秒回忆在我生命中给我带来美好的事和人，再用20秒对我的亲人和爱人说我爱你们，好好活下去。最后20秒，我想，就静静地，带着笑容，享受最后的时光~">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/GrandPalaceSky">
 <meta property="og:updated_time" content="2017-02-08T00:18:11.000Z">
 <meta name="twitter:card" content="summary">
@@ -1056,5 +1065,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

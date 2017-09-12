@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="每年六月都去看看海">
+<meta name="keywords" content="徒步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="麦里浩径第二段">
 <meta property="og:url" content="http://robinchan.cn/2017/06/26/MacLehouseTrailSection2/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="每年六月都去看看海">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-06-26T10:27:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="麦里浩径第二段">
@@ -1053,5 +1062,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

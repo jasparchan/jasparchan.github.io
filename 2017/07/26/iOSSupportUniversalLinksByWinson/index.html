@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -95,24 +102,13 @@
 
 
 
-<meta name="description" content="官方文档 
-
-Q1：我的应用为何要使用通用链接？
-
-我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。
-
-Q2：为何不用s">
+<meta name="description" content="官方文档   Q1：我的应用为何要使用通用链接？  我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。  Q2：为何不用s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS通用链接 By Winson">
 <meta property="og:url" content="http://robinchan.cn/2017/07/26/iOSSupportUniversalLinksByWinson/index.html">
 <meta property="og:site_name" content="神话先生">
-<meta property="og:description" content="官方文档 
-
-Q1：我的应用为何要使用通用链接？
-
-我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。
-
-Q2：为何不用s">
+<meta property="og:description" content="官方文档   Q1：我的应用为何要使用通用链接？  我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。  Q2：为何不用s">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-bfbf1d20b36064e7.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-a187a924f6edd604.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6067780-e5aab7f027006d2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -134,13 +130,7 @@ Q2：为何不用s">
 <meta property="og:updated_time" content="2017-07-26T06:55:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS通用链接 By Winson">
-<meta name="twitter:description" content="官方文档 
-
-Q1：我的应用为何要使用通用链接？
-
-我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。
-
-Q2：为何不用s">
+<meta name="twitter:description" content="官方文档   Q1：我的应用为何要使用通用链接？  我们的应用有很多分享到微信、QQ等第三方平台的内容，使用过程中，为了让用户在分享到微信的网页里面点击某个链接或者打开按钮直接转到我们的app，盯上了这个iOS 9之后才有的系统级的功能，他就是 Universal Links。虽然说通用链接并不是专门为这种设计的，但是要实现我上面说的 微信跳转到你的app ，它还是很方便的。  Q2：为何不用s">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6067780-bfbf1d20b36064e7.gif?imageMogr2/auto-orient/strip">
 
 
@@ -1160,5 +1150,19 @@ Q2：为何不用s">
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

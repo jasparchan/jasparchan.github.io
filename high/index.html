@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -95,52 +102,17 @@
 
 
 
-<meta name="description" content="无聊的时候，可以过来嗨一下 
-
-点我嗨起来
-
-
-
-.button {
-color: #666;
-    background-color: #EEE;
-    border-color: #EEE;
-    font-weight: 300;
-    font-size: 16px;
-    font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
+<meta name="description" content="无聊的时候，可以过来嗨一下   点我嗨起来    .button { color: #666;     background-color: #EEE;     border-color: #EEE;     font-weight: 300;     font-size: 16px;     font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一起嗨起来">
 <meta property="og:url" content="http://robinchan.cn/high/index.html">
 <meta property="og:site_name" content="神话先生">
-<meta property="og:description" content="无聊的时候，可以过来嗨一下 
-
-点我嗨起来
-
-
-
-.button {
-color: #666;
-    background-color: #EEE;
-    border-color: #EEE;
-    font-weight: 300;
-    font-size: 16px;
-    font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
+<meta property="og:description" content="无聊的时候，可以过来嗨一下   点我嗨起来    .button { color: #666;     background-color: #EEE;     border-color: #EEE;     font-weight: 300;     font-size: 16px;     font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-08T00:18:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一起嗨起来">
-<meta name="twitter:description" content="无聊的时候，可以过来嗨一下 
-
-点我嗨起来
-
-
-
-.button {
-color: #666;
-    background-color: #EEE;
-    border-color: #EEE;
-    font-weight: 300;
-    font-size: 16px;
-    font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
+<meta name="twitter:description" content="无聊的时候，可以过来嗨一下   点我嗨起来    .button { color: #666;     background-color: #EEE;     border-color: #EEE;     font-weight: 300;     font-size: 16px;     font-family: &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;">
 
 
 
@@ -1095,5 +1067,19 @@ function high() {
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

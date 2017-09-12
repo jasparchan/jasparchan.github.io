@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="记忆变得模糊外婆离开9年了，最后一次见她的样子也逐渐变得模糊。外婆是病逝的，听妈妈说最后是带着瘦骨嶙峋的身体离开的。我尝试通过妈妈找回一点点最后一次见她的记忆，但还是唤醒不了，难道那一次见面已经不存在我的记忆了吗？我妈说，外婆是乡里乡亲最尊敬的最善解人意的一个人，而且很疼我们，很能干。">
+<meta name="keywords" content="人物">
 <meta property="og:type" content="article">
 <meta property="og:title" content="外婆的记忆">
 <meta property="og:url" content="http://robinchan.cn/2017/06/22/mygrandma/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="记忆变得模糊外婆离开9年了，最后一次见她的样子也逐渐变得模糊。外婆是病逝的，听妈妈说最后是带着瘦骨嶙峋的身体离开的。我尝试通过妈妈找回一点点最后一次见她的记忆，但还是唤醒不了，难道那一次见面已经不存在我的记忆了吗？我妈说，外婆是乡里乡亲最尊敬的最善解人意的一个人，而且很疼我们，很能干。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/grandma_fogang.jpg">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/grandma_childhood.jpg">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/grandma_qingxi.jpg">
@@ -1081,5 +1090,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>

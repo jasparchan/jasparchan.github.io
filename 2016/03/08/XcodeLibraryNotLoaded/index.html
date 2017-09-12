@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -96,11 +103,13 @@
 
 
 <meta name="description" content="原因：我在搭建Jenkins的时候，把证书设置为始终信任，如下图。我的项目使用了Cocoapods，并且在Podfile加入use_frameworks!，然后在真机调试的时候就会出现以下错误（模拟器并不会）。1234567dyld: Library not loaded: @rpath/AFNetworking.framework/AFNetworking  Referenced from: /">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="真机调试APP时报Library Not Loaded错误">
 <meta property="og:url" content="http://robinchan.cn/2016/03/08/XcodeLibraryNotLoaded/index.html">
 <meta property="og:site_name" content="神话先生">
 <meta property="og:description" content="原因：我在搭建Jenkins的时候，把证书设置为始终信任，如下图。我的项目使用了Cocoapods，并且在Podfile加入use_frameworks!，然后在真机调试的时候就会出现以下错误（模拟器并不会）。1234567dyld: Library not loaded: @rpath/AFNetworking.framework/AFNetworking  Referenced from: /">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/KeychainSetting1.png">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/XcodeError.png">
 <meta property="og:image" content="http://7sbydq.com1.z0.glb.clouddn.com/static/images/KeychainSetting2.png">
@@ -1053,5 +1062,19 @@
 
   
 
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json",0.5)</script>
+  
 </body>
 </html>
